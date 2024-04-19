@@ -1,0 +1,218 @@
+/* General comments and structure */
+/* Main color theme using variables with fallback */
+* {
+    --main-bg-color: rgba(255, 255, 255, 1); /* white background with full opacity */
+    --primary-color: #0275d8; /* Bootstrap primary blue */
+    --secondary-color: #5cb85c; /* Bootstrap success green */
+}
+
+body {
+    background-color: var(--main-bg-color, white); /* Fallback if --main-bg-color fails */
+    font-family: 'Open Sans', sans-serif; /* Google Font */
+}
+
+header {
+    background-color: var(--primary-color);
+    position: relative;
+    color: white;
+    margin-top: 20px;  /* Long-hand notation for top margin */
+    margin-right: 30px; /* Long-hand notation for right margin */
+    margin-bottom: 20px; /* Long-hand notation for bottom margin */
+    margin-left: 30px; /* Long-hand notation for left margin */
+    padding-top: 20px;  /* Long-hand notation for top padding */
+    padding-right: 20px; /* Long-hand notation for right padding */
+    padding-bottom: 20px; /* Long-hand notation for bottom padding */
+    padding-left: 20px; /* Long-hand notation for left padding */
+    text-align: center;
+}
+
+nav{
+    display: flex;
+    flex-grow: 1;
+    justify-content: center; /* centers children horizontally in the flex container */
+    align-items: center; /* centers children vertically in the flex container */
+}
+
+h1 {
+    margin-bottom: 0.5rem;
+    color: orange;
+}
+
+h2, h3 {
+    margin-bottom: 0.5em;
+    color: hsla(34, 100%, 50%, 0.5);
+}
+
+/* Link styles */
+a {
+    color: var(--secondary-color);
+    text-decoration: none; /* Removes underline */
+}
+
+a:hover {
+    text-decoration: underline; /* Underline on hover */
+}
+
+/* Navigation styling */
+nav ul {
+    list-style-type: none; /* Removes bullet points */
+    padding: 0;
+    text-align: center;
+}
+
+nav ul li {
+    display: inline; /* Inline display for horizontal nav items */
+    margin-right: 20px;
+    color: color(display-p3 0 0.5 0);
+}
+
+/* Section styling using box model */
+section {
+    border: 1px solid #ccc; /* Light grey border */
+    padding: 5mm;
+    margin-top: 1cm;
+    border-radius: 8px; /* Rounded corners */
+    background: linear-gradient(
+        to right,
+        color-mix(in srgb, rgb(89, 156, 182) 50%, rgb(0, 0, 255) 50%), /* Red to blue gradient */
+        color-mix(in srgb, rgba(255, 0, 0, 0.8) 50%, rgba(0, 0, 255, 0.8) 50%)
+    );
+}
+
+/* Responsive image and media */
+img, audio, video {
+    margin: 10px 10px 10px 10px;
+    padding: 10px 10px 10px 10px;
+    min-width: 50%;
+    max-width: 90%; /* Responsive media elements */
+    height: auto;
+}
+
+/* Flexbox for footer layout */
+footer {
+    position: sticky;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: #f8f9fa; /* Light grey background */
+    border-style: solid;
+    border-color: #eee;
+    border-width: 1px; /* Light grey border on top */
+    border-color: #ff6700;
+    border-radius: 5px;
+    margin: auto
+    
+}
+
+/* Media query for mobile responsiveness */
+@media (width: 768px) {
+    nav ul li {
+        display: block; /* Stack nav items vertically on small screens */
+        margin: 10px 0;
+    }
+}
+
+/* CSS Grid for sections layout */
+main {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two columns of equal width */
+    grid-gap: 20px;
+    grid-row-gap: 5px;
+}
+
+/* Example of using grid and pseudo-classes */
+section:hover {
+    background-color: #f0f0f0; /* Light grey background on hover */
+}
+
+/* More complex CSS selectors */
+nav ul li + li {
+    border-left: 1px solid #eee; /* Adds a separator between nav items */
+}
+
+details summary {
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* Applying new and advanced selectors */
+details[open] summary {
+    color: var(--secondary-color);
+}
+
+button {
+    background-color: #007bff; /* Blue background color */
+    color: white; /* White text color */
+    padding: 10px 20px; /* Padding around text */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Cursor appears as a pointer */
+}
+
+button:hover {
+    background-color: #0056b3; /* Darker blue background on hover */
+}
+
+button:active {
+    background-color: #004080; /* Even darker blue background when active/clicked */
+}
+
+.feedback {
+    background-color: #f8f8f8;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+#name {
+    border: 2px solid #ccc;
+    padding: 10px;
+    width: calc(100% - 22px); /* considering border and padding */
+}
+
+input[type="checkbox"] {
+    transform: scale(1.2);
+    margin-right: 8px;
+}
+
+/* Descendant Combinator: style labels within fieldset */
+fieldset label {
+    display: block;
+    margin-top: 10px;
+}
+
+/* Child Combinator: direct children of nav styled distinctly */
+nav > ul {
+    background-color: #eee;
+    padding: 10px;
+    list-style-type: none;
+}
+
+/* General sibling combinator: style elements following h2 */
+h2 ~ p {
+    color: #666;
+}
+
+/* Adjacent sibling combinator: style the first paragraph after any h2 */
+h2 + p {
+    font-weight: bold;
+}
+
+/* Combining selectors: targeting elements with specific class and type */
+input.feedback[type="text"] {
+    background-color: #f0f0f0;
+}
+
+/* New Selector: :has() - Styling parent of elements that have specific children */
+nav:has(a.active) {
+    border-bottom: 3px solid green;
+}
+
+/* Nested Selectors */
+h2 {
+    &.important {
+        color: red;
+    }
+    &:hover {
+        text-decoration: underline;
+    }
+}
